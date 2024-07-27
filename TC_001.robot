@@ -1,12 +1,12 @@
 *** Settings ***
-Library  RequestsLibrary
-
+Library  RequestsLibrary  # Importing the RequestsLibrary
 
 *** Variables ***
-${Application_URL}  https://www.thetestingworld.com
+${Base_URL}  https://thetestingworldapi.com  # Defining the base URL for the API
 
 *** Test Cases ***
 TC_001_Get_Request
-    ${url}=  set variable  Hello World
-    log to console  ${Application_URL}
-    log to console  ${url}
+    create session  Get_Students_Details  ${Base_URL}  # Creating a session with the base URL
+    ${response}=  get request  Get_Students_Details  api/studentsDetails  # Sending a GET request to the specified endpoint
+    log to console  ${response.status_code}  # Logging the response to the console
+    log to console  ${response.content}      # Logging the response content to the console
