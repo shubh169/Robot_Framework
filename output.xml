@@ -1,51 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0.1 (Python 3.12.4 on win32)" generated="2024-07-27T13:09:10.121710" rpa="false" schemaversion="5">
-<suite id="s1" name="TC 004 Delete request" source="D:\shubham\Robot_Framework\TC_004_Delete_request.robot">
-<test id="s1-t1" name="TC_04 Delete Request" line="11">
+<robot generator="Robot 7.0.1 (Python 3.12.4 on win32)" generated="2024-07-27T14:44:07.071889" rpa="false" schemaversion="5">
+<suite id="s1" name="TC 006 Put Request" source="D:\shubham\Robot_Framework\TC_006_Put_Request.robot">
+<test id="s1-t1" name="TC_04 Put Request" line="12">
 <kw name="Create Session" owner="RequestsLibrary">
-<msg time="2024-07-27T13:09:10.603827" level="INFO">Creating Session using : alias=Student_info, url=https://thetestingworldapi.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<arg>Student_info</arg>
+<msg time="2024-07-27T14:44:07.722039" level="INFO">Creating Session using : alias=Put_data, url=https://thetestingworldapi.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>Put_data</arg>
 <arg>${Base_URL}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2024-07-27T13:09:10.603827" elapsed="0.002427"/>
+<status status="PASS" start="2024-07-27T14:44:07.722039" elapsed="0.001053"/>
 </kw>
-<kw name="Delete Request" owner="RequestsLibrary">
-<msg time="2024-07-27T13:09:10.606254" level="WARN">Keyword 'RequestsLibrary.Delete Request' is deprecated. Please use `DELETE On Session` instead.</msg>
-<msg time="2024-07-27T13:09:10.762865" level="INFO">DELETE Request : url=https://thetestingworldapi.com/api/studentsDetails/10300920 
- path_url=/api/studentsDetails/10300920 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
- body=None 
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-07-27T14:44:07.723092" level="INFO">&amp;{body} = { id=10300945 | first_name=shubham | middle_name=Chaudhary | last_name=Saharawat | date_of_birth=13/05/1997 }</msg>
+<var>&amp;{body}</var>
+<arg>id=${Student_ID}</arg>
+<arg>first_name=shubham</arg>
+<arg>middle_name=Chaudhary</arg>
+<arg>last_name=Saharawat</arg>
+<arg>date_of_birth=13/05/1997</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-07-27T14:44:07.723092" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-07-27T14:44:07.724493" level="INFO">&amp;{header} = { Content-Type=application/json }</msg>
+<var>&amp;{header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-07-27T14:44:07.723092" elapsed="0.001401"/>
+</kw>
+<kw name="Put Request" owner="RequestsLibrary">
+<msg time="2024-07-27T14:44:07.724493" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg time="2024-07-27T14:44:09.216028" level="INFO">PUT Request : url=https://thetestingworldapi.com/api/studentsDetails/10300945 
+ path_url=/api/studentsDetails/10300945 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '128'} 
+ body={"id": "10300945", "first_name": "shubham", "middle_name": "Chaudhary", "last_name": "Saharawat", "date_of_birth": "13/05/1997"} 
  </msg>
-<msg time="2024-07-27T13:09:10.776259" level="INFO">DELETE Response : url=https://thetestingworldapi.com/api/studentsDetails/10300920 
+<msg time="2024-07-27T14:44:09.216028" level="INFO">PUT Response : url=https://thetestingworldapi.com/api/studentsDetails/10300945 
  status=200, reason=OK 
- headers={'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Content-Type': 'application/json; charset=utf-8', 'Expires': '-1', 'Server': 'Microsoft-IIS/10.0', 'X-AspNet-Version': '4.0.30319', 'X-Powered-By': 'ASP.NET', 'X-Powered-By-Plesk': 'PleskWin', 'Date': 'Sat, 27 Jul 2024 07:39:02 GMT', 'Content-Length': '43'} 
- body={"status":"false","msg":"record not found"} 
+ headers={'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Content-Type': 'application/json; charset=utf-8', 'Expires': '-1', 'Server': 'Microsoft-IIS/10.0', 'X-AspNet-Version': '4.0.30319', 'X-Powered-By': 'ASP.NET', 'X-Powered-By-Plesk': 'PleskWin', 'Date': 'Sat, 27 Jul 2024 09:13:56 GMT', 'Content-Length': '46'} 
+ body={"status":"true","msg":"update  data success"} 
  </msg>
-<msg time="2024-07-27T13:09:10.776259" level="INFO">C:\Users\kumarshu\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'thetestingworldapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+<msg time="2024-07-27T14:44:09.216028" level="INFO">C:\Users\kumarshu\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'thetestingworldapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
   warnings.warn(</msg>
-<msg time="2024-07-27T13:09:10.776795" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<msg time="2024-07-27T14:44:09.216028" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
 <var>${Response}</var>
-<arg>Student_info</arg>
-<arg>api/studentsDetails/${Student_ID}</arg>
-<doc>*DEPRECATED* Please use `DELETE On Session` instead.</doc>
-<status status="PASS" start="2024-07-27T13:09:10.606254" elapsed="0.170541"/>
+<arg>Put_data</arg>
+<arg>/api/studentsDetails/${Student_ID}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `PUT On Session` instead.</doc>
+<status status="PASS" start="2024-07-27T14:44:07.724493" elapsed="1.491535"/>
 </kw>
-<kw name="Convert To String" owner="BuiltIn">
-<msg time="2024-07-27T13:09:10.778420" level="INFO">${Response_code} = 200</msg>
-<var>${Response_code}</var>
+<kw name="Log To Console" owner="BuiltIn">
 <arg>${Response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<status status="PASS" start="2024-07-27T13:09:10.777909" elapsed="0.000511"/>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-27T14:44:09.224804" elapsed="0.000556"/>
 </kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${Response_code}</arg>
-<arg>200</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2024-07-27T13:09:10.779583" elapsed="0.000000"/>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${Response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-27T14:44:09.225360" elapsed="0.002711"/>
 </kw>
-<status status="PASS" start="2024-07-27T13:09:10.603827" elapsed="0.176766"/>
+<status status="PASS" start="2024-07-27T14:44:07.722039" elapsed="1.506032"/>
 </test>
-<status status="PASS" start="2024-07-27T13:09:10.129909" elapsed="0.650684"/>
+<status status="PASS" start="2024-07-27T14:44:07.073529" elapsed="2.158796"/>
 </suite>
 <statistics>
 <total>
@@ -54,10 +71,10 @@
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="TC 004 Delete request">TC 004 Delete request</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="TC 006 Put Request">TC 006 Put Request</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2024-07-27T13:09:10.606254" level="WARN">Keyword 'RequestsLibrary.Delete Request' is deprecated. Please use `DELETE On Session` instead.</msg>
+<msg time="2024-07-27T14:44:07.724493" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
 </errors>
 </robot>
